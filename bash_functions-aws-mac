@@ -1,0 +1,95 @@
+DIR_SSH_KEYS=/Users/baigmohd/Downloads/Keys
+
+# SSH into NorthVirignia instances
+nv(){
+	USAGE="Usage: nv <ip-addr>"
+	[ $# -ne 1 ] && { echo $USAGE; return 1; }
+
+	ssh -i $DIR_SSH_KEYS/MyNorthVirginiaKP.pem ec2-user@$1
+}
+
+# SSH into Mumbai instances
+mum(){
+	USAGE="Usage: mum <ip-addr>"
+	[ $# -ne 1 ] && { echo $USAGE; return 1; }
+
+	ssh -i $DIR_SSH_KEYS/MyMumbaiKP.pem ec2-user@$1
+}
+
+# SSH into Singapore instances
+sp(){
+        USAGE="Usage: sp <ip-addr>"
+        [ $# -ne 1 ] && { echo $USAGE; return 1; }
+
+        ssh -i $DIR_SSH_KEYS/MySingaporeKP.pem ec2-user@$1
+}
+
+# SSH into Ireland instances
+ire(){
+        USAGE="Usage: ire <ip-addr>"
+        [ $# -ne 1 ] && { echo $USAGE; return 1; }
+
+        ssh -i $DIR_SSH_KEYS/MyIrelandKP.pem ec2-user@$1
+}
+
+
+# SSH into Sydney instances
+syd(){
+        USAGE="Usage: syd <ip-addr>"
+        [ $# -ne 1 ] && { echo $USAGE; return 1; }
+
+        ssh -i $DIR_SSH_KEYS/MySydneyKP.pem ec2-user@$1
+}
+
+# SSH into Oregon instances
+ore(){
+        USAGE="Usage: ore <ip-addr>"
+        [ $# -ne 1 ] && { echo $USAGE; return 1; }
+
+        ssh -i $DIR_SSH_KEYS/MyOregonKP.pem ec2-user@$1
+}
+
+# SSH into Central instances
+cen(){
+        USAGE="Usage: cen <ip-addr>"
+        [ $# -ne 1 ] && { echo $USAGE; return 1; }
+
+        ssh -i $DIR_SSH_KEYS/MyCentralKP.pem ec2-user@$1
+}
+
+# SSH into GRU Sao Paulo instances
+gru(){
+        USAGE="Usage: gru <ip-addr>"
+        [ $# -ne 1 ] && { echo $USAGE; return 1; }
+
+        ssh -i $DIR_SSH_KEYS/MySaoPauloKP.pem ec2-user@$1
+}
+
+# mkdir and cd to given directory
+mkcd(){
+	USAGE="Usage: mkcd <directory-name>"
+	[ $# -ne 1 ] && { echo $USAGE; return 1; }
+
+	mkdir -p "$1" && cd "$1"
+}
+
+# Download Safari books
+safari(){
+        USAGE="Usage: safari bookId"
+        [ $# -ne 1 ] && { echo $USAGE; return 1; }
+
+        python3 /Users/baigmohd/Downloads/safaribooks/safaribooks.py --cred <email-address>:<password> "$1"
+}
+
+# Custom shell which makes each command prefixed by keyword you provide
+shell() {
+    # USAGE = "shell" or "shell aws" or "shell docker". Basically "shell <keyword>"
+    TOPCMD=$@ bash -c 'while read -p "${TOPCMD##*/}> " -ra sub; do
+        case ${sub[0]:-} in
+        "") continue;;
+        exit) exit;;
+        escape) (set -x; ${sub[@]:1});;
+        *) (set -x; ${TOPCMD} ${sub[@]});;
+        esac
+        done'
+}
