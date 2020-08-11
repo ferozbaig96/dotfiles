@@ -1,0 +1,32 @@
+# Remaining custom configurations
+
+export EDITOR=/bin/nano
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias iip='curl ifconfig.co'
+
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+export EDITOR=/bin/nano
+
+# For dig +short
+ds(){
+	USAGE="Usage: ds <domain>"
+	[ $# -lt 1 ] && { echo $USAGE; return 1; }
+
+	dig +short $@
+}
+
+# For using dig of a specific version (supporting EDNS etc)
+diggy(){
+	USAGE="This is latest dig version.\nUsage: diggy <domain>"
+	[ $# -lt 1 ] && { echo -e $USAGE; return 1; }
+
+	/home/ec2-user/bind-9.9.3/bin/dig/dig $@
+}
