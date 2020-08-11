@@ -1,0 +1,52 @@
+# SSH into instances
+alias myLinuxInstance="ssh -i /Users/baigmohd/Downloads/MyNorthVirginiaKP.pem ec2-user@52.73.191.204"
+alias myIpv6LinuxInstance="ssh -i /Users/baigmohd/Downloads/MyNorthVirginiaKP.pem ec2-user@35.171.125.152"
+alias myClassicInstance="ssh -i /Users/baigmohd/Downloads/MyNorthVirginiaKP.pem ec2-user@184.73.254.197"
+alias myUbuntuInstance="ssh -i /Users/baigmohd/Downloads/Keys/MyNorthVirginiaKP.pem ubuntu@18.206.95.34"
+
+# baigmohd aws accountId
+alias myAccountId="echo 784XXXXXXXXX"
+
+# cd to OneDrive case-work location
+alias cw="cd /Users/baigmohd/Desktop/Case-work/OneDrive/Case-work/Files"
+
+# cd to sublime-snippets folder
+alias ss="cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User"
+
+# cd to notes in case-work location
+alias no="cd /Users/baigmohd/Desktop/Case-work/OneDrive/notes"
+
+# aws cli tab-autocomplete
+complete -C '/usr/local/bin/aws_completer' aws
+
+# sourcing user-defined functions
+source /Users/baigmohd/.bash_functions
+
+# dirs -v
+alias dirs="dirs -v"
+# message on login screen
+# sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "This laptop belongs to Feroz @baigmohd. Kindly contact me at +91 9643-662-641 if you find it unattended. Thanks."
+
+# git auto-complete
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
+# EDITOR
+export EDITOR=/usr/bin/nano
+
+# ABE
+alias abe="cd ~/Desktop/ABE/reviews/"
+
+# PATH for awsk2 (BotoK2)
+export PATH=$PATH:/Users/baigmohd/Library/Python/2.7/bin
+
+# SLAMS enable
+alias slamsen="curl -X PUT https://aws-slams-api-iad.iad.proxy.amazon.com/api/v2/datasources/1/rule_groups/3807 -H \"Content-Type: application/json\"  -L -b /Users/baigmohd/.midway/cookie -d '{\"enabled\":true}'"
+alias slamsdis="curl -X PUT https://aws-slams-api-iad.iad.proxy.amazon.com/api/v2/datasources/1/rule_groups/3807 -H \"Content-Type: application/json\"  -L -b /Users/baigmohd/.midway/cookie -d '{\"enabled\":false}'"
+
+# PATH for Android platform tools
+export PATH=$PATH:/Users/baigmohd/Downloads/platform-tools
+
+# PATH for mtr
+export PATH=$PATH:/usr/local/sbin
